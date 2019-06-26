@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[dev-packages]
+pip = "*"
+bumpversion = "*"
+wheel = "*"
+watchdog = "*"
+flake8 = "*"
+tox = "*"
+coverage = "*"
+Sphinx = "*"
+twine = "*"
+pluggy= "*"
+pytest= "*"
+pytest-runner = "*"
+yapf = "*"
+
+[packages]
+wdbreduce = {editable = true,path = "."}
+
+[requires]
+python_version = "3.6"

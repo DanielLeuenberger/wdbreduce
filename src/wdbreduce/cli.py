@@ -35,7 +35,13 @@ __version__ = '0.1.0'
     help="Increase verbosity (specify multiple times for more)")
 @click.option('--version', '-V', is_flag=True, help="Print version")
 def main(*args, **kwargs):
-    """Console script for test_cli_project."""
+    """
+    Reduces the number of DOF of a polygon using
+    the Ramer-Douglas-Peucker algorithm.
+    Looks for all *.txt files in the input directory, reduces
+    the polygons in them and writes the reduced polygons
+    to the output directory.
+    """
 
     logging.basicConfig(level=count_to_log_level(kwargs['verbose']))
 

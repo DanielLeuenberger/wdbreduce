@@ -21,7 +21,7 @@ yapf = "*"
 [packages]
 numpy = "*"
 rdp = "*"
-wdbreduce = {editable = true,path = "."}
+wdbreduce = {path = "."}
 
 [requires]
 python_version = "3.7"

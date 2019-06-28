@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Console script for wdbreduce."""
+import os
 import sys
+import glob
 import click
 import logging
 
@@ -17,7 +19,9 @@ __version__ = '0.1.0'
     '--epsilon',
     '-e',
     default=0.003,
-    help="tolerance in deg when reducing the polygon. 0.001 deg corresponds to 111.1m resolution at Equator")
+    help=(
+        "tolerance in deg when reducing the polygon.\n"
+        "0.001 deg corresponds to 111.1m resolution at Equator"))
 @click.option(
     '--dry-run',
     '-n',
@@ -35,8 +39,6 @@ def main(*args, **kwargs):
 
     logging.basicConfig(level=count_to_log_level(kwargs['verbose']))
 
-    logging.warning("This is a warning.")
-    logging.info("This is an info message.")
     logging.debug("This is a debug message.")
 
     if kwargs['version']:
@@ -47,20 +49,20 @@ def main(*args, **kwargs):
         click.echo("Is dry run")
         return 0
 
-    click.echo(
-        "Replace this message by putting your code into test_cli_project.cli.main"
-    )
-    click.echo("See click documentation at http://click.pocoo.org/")
-
-    inputdir  = kwargs["inputdir"]
+    inputdir = kwargs["inputdir"]
     outputdir = kwargs["outputdir"]
+    epsilon = kwargs["epsilon"]
+    logging.info(f"inputdir = {inputdir}")
+    logging.info(f"outputdir = {outputdir}")
+    logging.info(f"epsilon = {epsilon}")
+
     if not os.path.exists(outputdir):
         os.makedirs(outputdir)
-    infiles = glob.glob(inputdir+"/*.txt")
+    infiles = glob.glob(inputdir + "/*.txt")
     for infile in infiles:
-        outfile = outputdir+"/"+os.path.basename(infile)
-        print("infile: {:s}, outfile: {:s}".format(infile,outfile))
-        red = RdpPolygonReducer(infile,outfile)
+        outfile = outputdir + "/" + os.path.basename(infile)
+        logging.info(f"infile: {infile}, outfile: {outfile}")
+        red = RdpPolygonReducer(infile, outfile, logging)
         red.readAndReduce(epsilon)
 
     return 0

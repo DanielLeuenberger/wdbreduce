@@ -4,14 +4,15 @@ wdbreduce
 
 
 
-Reduces the number of DOF of a polygon
+Reduces the number of DOF of a polygon using the Ramer-Douglas-Peucker algorithm.
 
 
 
 Features
 --------
 
-* TODO
+Looks for txt files in the input directory, processes them and writes a reduced version
+of it into the output directory. The tolerance epsilon can be set (default value: 0.003)
 
 Credits
 -------

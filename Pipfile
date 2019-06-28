@@ -19,6 +19,8 @@ pytest-runner = "*"
 yapf = "*"
 
 [packages]
+numpy = "*"
+rdp = "*"
 wdbreduce = {editable = true,path = "."}
 
 [requires]

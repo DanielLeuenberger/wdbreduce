@@ -1,9 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """Tests for `wdbreduce/utils.py` package."""
-import pytest
 import logging
-from click.testing import CliRunner
 
 from wdbreduce import utils
 
